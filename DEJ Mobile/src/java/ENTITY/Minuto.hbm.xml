@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-12-2016 18:33:21 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ENTITY.Minuto" table="minuto" catalog="dejmobile" optimistic-lock="version">
+        <id name="idMinuto" type="java.lang.Integer">
+            <column name="idMinuto" />
+            <generator class="identity" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50" not-null="true" />
+        </property>
+        <property name="precio" type="int">
+            <column name="precio" not-null="true" />
+        </property>
+        <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMinuto" not-null="true" />
+            </key>
+            <one-to-many class="ENTITY.Solicitud" />
+        </set>
+    </class>
+</hibernate-mapping>

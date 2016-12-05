@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-12-2016 18:33:21 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ENTITY.Cliente" table="cliente" catalog="dejmobile" optimistic-lock="version">
+        <id name="rutCliente" type="string">
+            <column name="rutCliente" length="50" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="comuna" class="ENTITY.Comuna" fetch="select">
+            <column name="idComuna" not-null="true" />
+        </many-to-one>
+        <property name="clave" type="int">
+            <column name="clave" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="apellidoPaterno" type="string">
+            <column name="apellidoPaterno" length="50" not-null="true" />
+        </property>
+        <property name="apellidoMaterno" type="string">
+            <column name="apellidoMaterno" length="50" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="50" not-null="true" />
+        </property>
+        <property name="numeracion" type="int">
+            <column name="numeracion" not-null="true" />
+        </property>
+        <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rutCliente" length="50" />
+            </key>
+            <one-to-many class="ENTITY.Solicitud" />
+        </set>
+    </class>
+</hibernate-mapping>

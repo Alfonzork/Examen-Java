@@ -7,16 +7,13 @@ package DAO;
 
 import DAL.HibernateUtil;
 import java.util.List;
-import java.util.stream.Collectors;
-import javax.persistence.Entity;
 import org.hibernate.Session;
 
 /**
  *
  * @author Alfonzork
  */
-public class Comuna {
-    
+public class ComunaDAO {
     public List<ENTITY.Comuna> listarComuna() throws Exception
     {
     Session session = HibernateUtil.getSessionFactory().openSession();
@@ -31,6 +28,5 @@ public class Comuna {
             session.close();
             throw e;
         }
-    
     }
 }

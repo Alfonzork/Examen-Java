@@ -14,19 +14,21 @@ import org.hibernate.Session;
  * @author Alfonzork
  */
 public class ComunaDAO {
-    public List<ENTITY.Comuna> listarComuna() throws Exception
-    {
-    Session session = HibernateUtil.getSessionFactory().openSession();
+
+    public List<ENTITY.Comuna> getLista() throws Exception {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         try {
-            session.beginTransaction();
             List<ENTITY.Comuna> listar = (List<ENTITY.Comuna>) session.createCriteria(ENTITY.Comuna.class).list();
-           session.getTransaction().commit();
-           session.close();
-           return listar;
+            session.getTransaction().commit();
+            return listar;
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            session.getTransaction().rollback();
             session.close();
+            System.err.println(e.getMessage());
             throw e;
+        } finally {
+            session.close();
         }
     }
 }

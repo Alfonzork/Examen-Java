@@ -79,7 +79,7 @@ public class ClienteDAO {
         }
     }
 
-    public ENTITY.Cliente getClientebyRut(String rut) throws Exception {
+    public ENTITY.Cliente getClientebyRut(String rut, int clave) throws Exception {
         try {
             session.beginTransaction();
             ENTITY.Cliente tmp = (ENTITY.Cliente) session.createCriteria(ENTITY.Cliente.class).add(Restrictions.eq("rutCliente", rut)).uniqueResult();

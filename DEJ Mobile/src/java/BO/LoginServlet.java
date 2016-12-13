@@ -5,16 +5,19 @@
  */
 package BO;
 
+import DAO.ClienteDAO;
+import ENTITY.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jdk.nashorn.internal.scripts.JS;
 
 /**
  *
- * @author Alfonzork
+ * @author Luis Fredes & José Villaseca
  */
 public class LoginServlet extends HttpServlet {
 
@@ -31,7 +34,29 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            int psw;
+
+            try {
+                String sess = request.getParameter("txtRut");
+                psw = Integer.parseInt(request.getParameter("txtPass"));
+                sess = sess.replace("-", "");
+
+                DAO.ClienteDAO clDao = new ClienteDAO();
+                ENTITY.Cliente clEnt = clDao.getClientebyRut(sess);
+
+                if (sess.equals(clEnt.getRutCliente()) && psw == clEnt.getClave()) {
+                    request.setAttribute("alertMsg", "Inicio de Session OK!!");
+                    request.getSession().setAttribute("userSes", clEnt);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("paso1.jsp").forward(request, response);
+                    request.getRequestDispatcher("paso2.jsp").forward(request, response);
+                    request.getRequestDispatcher("planes.jsp").forward(request, response);
+                }
+            } catch (Exception e) {
+                request.setAttribute("alertMsg", "Usuario y/o Clave Incorrecto!!");
+                request.getRequestDispatcher("./login.jsp").forward(request, response);
+            }
+
         }
     }
 

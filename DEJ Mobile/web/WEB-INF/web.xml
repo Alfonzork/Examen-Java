@@ -4,13 +4,48 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>BO.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>crudCliente</servlet-name>
+        <servlet-class>BO.crudCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SolicitudServlet</servlet-name>
+        <servlet-class>BO.SolicitudServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmaPlanServlet</servlet-name>
+        <servlet-class>BO.ConfirmaPlanServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CerrarServlet</servlet-name>
+        <servlet-class>BO.CerrarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>crudCliente</servlet-name>
+        <url-pattern>/crudCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SolicitudServlet</servlet-name>
+        <url-pattern>/SolicitudServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmaPlanServlet</servlet-name>
+        <url-pattern>/ConfirmaPlanServlet</url-pattern>
+    </servlet-mapping>  
+    <servlet-mapping>
+        <servlet-name>CerrarServlet</servlet-name>
+        <url-pattern>/CerrarServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

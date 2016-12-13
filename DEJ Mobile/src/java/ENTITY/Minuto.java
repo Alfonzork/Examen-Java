@@ -1,5 +1,5 @@
 package ENTITY;
-// Generated 05-12-2016 18:33:20 by Hibernate Tools 4.3.1
+// Generated 11-12-2016 14:12:43 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -26,7 +26,7 @@ public class Minuto  implements java.io.Serializable {
      private Integer idMinuto;
      private String descripcion;
      private int precio;
-     private Set solicituds = new HashSet(0);
+     private Set<Solicitud> solicituds = new HashSet<Solicitud>(0);
 
     public Minuto() {
     }
@@ -36,7 +36,7 @@ public class Minuto  implements java.io.Serializable {
         this.descripcion = descripcion;
         this.precio = precio;
     }
-    public Minuto(String descripcion, int precio, Set solicituds) {
+    public Minuto(String descripcion, int precio, Set<Solicitud> solicituds) {
        this.descripcion = descripcion;
        this.precio = precio;
        this.solicituds = solicituds;
@@ -75,11 +75,11 @@ public class Minuto  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="minuto")
-    public Set getSolicituds() {
+    public Set<Solicitud> getSolicituds() {
         return this.solicituds;
     }
     
-    public void setSolicituds(Set solicituds) {
+    public void setSolicituds(Set<Solicitud> solicituds) {
         this.solicituds = solicituds;
     }
 

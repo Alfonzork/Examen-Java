@@ -1,5 +1,5 @@
 package ENTITY;
-// Generated 05-12-2016 18:33:20 by Hibernate Tools 4.3.1
+// Generated 11-12-2016 14:12:43 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -52,6 +52,9 @@ public class Solicitud  implements java.io.Serializable {
        this.total = total;
        this.fechaSolicitud = fechaSolicitud;
     }
+    //public Solicitud(String giga, String minuto, String domicilio, int telefono, String comuna, Date fecha, int total) {
+     //   this.cuotaNavegacion = giga;
+   // }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05-12-2016 18:33:21 by Hibernate Tools 4.3.1 -->
+<!-- Generated 11-12-2016 14:12:44 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ENTITY.Cliente" table="cliente" catalog="dejmobile" optimistic-lock="version">
         <id name="rutCliente" type="string">
@@ -28,6 +28,9 @@
         </property>
         <property name="numeracion" type="int">
             <column name="numeracion" not-null="true" />
+        </property>
+        <property name="telefono" type="int">
+            <column name="telefono" not-null="true" />
         </property>
         <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
             <key>

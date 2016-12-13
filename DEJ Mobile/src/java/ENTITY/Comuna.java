@@ -1,5 +1,5 @@
 package ENTITY;
-// Generated 05-12-2016 18:33:20 by Hibernate Tools 4.3.1
+// Generated 11-12-2016 14:12:43 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -25,7 +25,7 @@ public class Comuna  implements java.io.Serializable {
 
      private Integer idComuna;
      private String nombreComuna;
-     private Set clientes = new HashSet(0);
+     private Set<Cliente> clientes = new HashSet<Cliente>(0);
 
     public Comuna() {
     }
@@ -34,7 +34,7 @@ public class Comuna  implements java.io.Serializable {
     public Comuna(String nombreComuna) {
         this.nombreComuna = nombreComuna;
     }
-    public Comuna(String nombreComuna, Set clientes) {
+    public Comuna(String nombreComuna, Set<Cliente> clientes) {
        this.nombreComuna = nombreComuna;
        this.clientes = clientes;
     }
@@ -62,11 +62,11 @@ public class Comuna  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="comuna")
-    public Set getClientes() {
+    public Set<Cliente> getClientes() {
         return this.clientes;
     }
     
-    public void setClientes(Set clientes) {
+    public void setClientes(Set<Cliente> clientes) {
         this.clientes = clientes;
     }
 

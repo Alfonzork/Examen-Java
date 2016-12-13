@@ -8,6 +8,7 @@ package DAO;
 import DAL.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -44,6 +45,34 @@ public class SolicitudDAO {
             throw e;
         } finally {
             session.close();
+        }
+    }
+    
+    public ENTITY.Solicitud getSolicitudbyId(int id) throws Exception {
+        try {
+            session.beginTransaction();
+            ENTITY.Solicitud tmp = (ENTITY.Solicitud) session.createCriteria(ENTITY.Solicitud.class).add(Restrictions.eq("idSolicitud", id)).uniqueResult();
+            session.getTransaction().commit();
+            session.close();
+            return tmp;
+        } catch (Exception e) {
+            System.err.print(e.getMessage());
+            session.close();
+            throw e;
+        }
+    }
+    
+    public ENTITY.Solicitud getSolicitudbyCliente(ENTITY.Cliente cliente) throws Exception {
+        try {
+            session.beginTransaction();
+            ENTITY.Solicitud tmp = (ENTITY.Solicitud) session.createCriteria(ENTITY.Solicitud.class).add(Restrictions.eq("cliente", cliente)).uniqueResult();
+            session.getTransaction().commit();
+            session.close();
+            return tmp;
+        } catch (Exception e) {
+            System.err.print(e.getMessage());
+            session.close();
+            throw e;
         }
     }
 }

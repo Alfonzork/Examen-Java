@@ -1,5 +1,5 @@
 package ENTITY;
-// Generated 05-12-2016 18:33:20 by Hibernate Tools 4.3.1
+// Generated 11-12-2016 14:12:43 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -31,13 +31,14 @@ public class Cliente  implements java.io.Serializable {
      private String apellidoMaterno;
      private String direccion;
      private int numeracion;
-     private Set solicituds = new HashSet(0);
+     private int telefono;
+     private Set<Solicitud> solicituds = new HashSet<Solicitud>(0);
 
     public Cliente() {
     }
 
 	
-    public Cliente(String rutCliente, Comuna comuna, int clave, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, int numeracion) {
+    public Cliente(String rutCliente, Comuna comuna, int clave, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, int numeracion, int telefono) {
         this.rutCliente = rutCliente;
         this.comuna = comuna;
         this.clave = clave;
@@ -46,8 +47,9 @@ public class Cliente  implements java.io.Serializable {
         this.apellidoMaterno = apellidoMaterno;
         this.direccion = direccion;
         this.numeracion = numeracion;
+        this.telefono = telefono;
     }
-    public Cliente(String rutCliente, Comuna comuna, int clave, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, int numeracion, Set solicituds) {
+    public Cliente(String rutCliente, Comuna comuna, int clave, String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, int numeracion, int telefono, Set<Solicitud> solicituds) {
        this.rutCliente = rutCliente;
        this.comuna = comuna;
        this.clave = clave;
@@ -56,6 +58,7 @@ public class Cliente  implements java.io.Serializable {
        this.apellidoMaterno = apellidoMaterno;
        this.direccion = direccion;
        this.numeracion = numeracion;
+       this.telefono = telefono;
        this.solicituds = solicituds;
     }
    
@@ -141,12 +144,22 @@ public class Cliente  implements java.io.Serializable {
         this.numeracion = numeracion;
     }
 
+    
+    @Column(name="telefono", nullable=false)
+    public int getTelefono() {
+        return this.telefono;
+    }
+    
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
 @OneToMany(fetch=FetchType.LAZY, mappedBy="cliente")
-    public Set getSolicituds() {
+    public Set<Solicitud> getSolicituds() {
         return this.solicituds;
     }
     
-    public void setSolicituds(Set solicituds) {
+    public void setSolicituds(Set<Solicitud> solicituds) {
         this.solicituds = solicituds;
     }
 
